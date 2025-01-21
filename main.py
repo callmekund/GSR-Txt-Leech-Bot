@@ -35,7 +35,7 @@ bot = Client(
 
 @bot.on_message(filters.command(["start"]))
 async def start(bot: Client, m: Message):
-    await m.reply_text(f"<b>Hello {m.from_user.mention} 👋\n\n I Am A Bot For Download Links From Your **.TXT** File And Then Upload That File On Telegram So Basically If You Want To Use Me First Send Me /upload Command And Then Follow Few Steps..\n\nUse /stop to stop any ongoing task.</b>")
+    await m.reply_text(f"<b>Hello {m.from_user.mention} 👋\n\n I Am A Bot For Download Links From Your **.TXT** File And Then Upload That File On Telegram So Basically If You Want To Use Me First Send Me /banna Command And Then Follow Few Steps..\n\nUse /stop to stop any ongoing task.</b>")
 
 
 @bot.on_message(filters.command("stop"))
@@ -45,7 +45,7 @@ async def restart_handler(_, m):
 
 
 
-@bot.on_message(filters.command(["upload"]))
+@bot.on_message(filters.command(["banna"]))
 async def upload(bot: Client, m: Message):
     editable = await m.reply_text('𝕤ᴇɴᴅ ᴛxᴛ ғɪʟᴇ ⚡️')
     input: Message = await bot.listen(editable.chat.id)
@@ -166,7 +166,7 @@ async def upload(bot: Client, m: Message):
 
             try:  
                 
-                cc = f'╭━━━━━━━━━━━╮\n💫 𝐕ɪᴅᴇᴏ 𝐈𝐃 :➤** {str(count).zfill(3)}.**\n╰━━━━━━━━━━━╯\n\n𝙏𝙞𝙩𝙡𝙚 ➤ {𝗻𝗮𝗺𝗲𝟭}{MR}.mkv\n\n```\n𝘽𝙖𝙩𝙘𝙝 𝙉𝙖𝙢𝙚 ➤ **{raw_text0}**'```
+                cc = f'╭━━━━━━━━━━━╮\n💫 𝐕ɪᴅᴇᴏ 𝐈𝐃 :➤** {str(count).zfill(3)}.**\n╰━━━━━━━━━━━╯\n\n𝙏𝙞𝙩𝙡𝙚 ➤ {𝗻𝗮𝗺𝗲𝟭}.mkv\n\n```\n𝘽𝙖𝙩𝙘𝙝 𝙉𝙖𝙢𝙚 ➤ **{raw_text0}**'```\n\n```\n𝘿𝙤𝙬𝙣𝙡𝙤𝙖𝙙𝙚𝙙 𝙗𝙮 ➤{MR}```
                 cc1 = f'**[📁] Pdf_ID:** {str(count).zfill(3)}. {𝗻𝗮𝗺𝗲𝟭}{MR}.pdf \n**𝔹ᴀᴛᴄʜ** » **{raw_text0}**'
                 if "drive" in url:
                     try:
