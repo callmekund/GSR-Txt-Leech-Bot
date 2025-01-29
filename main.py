@@ -116,17 +116,34 @@ async def upload(bot: Client, m: Message):
         MR = raw_text3
    
     await editable.edit("Now send the Thumb url/nEg » https://graph.org/file/ce1723991756e48c35aa1.jpg \n Or if don't want thumbnail send = no")
-    input6 = message = await bot.listen(editable.chat.id)
-    raw_text6 = input6.text
-    await input6.delete(True)
-    await editable.delete()
+input6 = message = await bot.listen(editable.chat.id)
+raw_text6 = input6.text
+await input6.delete(True)
+await editable.delete()
 
-    thumb = input6.text
+thumb = raw_text6.strip()
+
+# Check if the user wants a custom thumbnail
+if thumb.lower() != "no":
+    # Validate the URL and download it
     if thumb.startswith("http://") or thumb.startswith("https://"):
-        getstatusoutput(f"wget '{thumb}' -O 'thumb.jpg'")
-        thumb = "thumb.jpg"
+        try:
+            # Download the thumbnail image
+            thumb_path = "thumb.jpg"
+            response = requests.get(thumb)
+            with open(thumb_path, 'wb') as f:
+                f.write(response.content)
+            thumb = thumb_path
+        except requests.RequestException as e:
+            # Handle any download errors
+            await m.reply_text(f"**Error downloading the thumbnail**: {str(e)}")
+            thumb = None
     else:
-        thumb == "no"
+        await m.reply_text("**Invalid thumbnail URL.**")
+        thumb = None
+else:
+    thumb = None  # No thumbnail
+
 
     if len(links) == 1:
         count = 1
